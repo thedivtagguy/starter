@@ -1,0 +1,14 @@
+// This is an example of an SCSS partial you can use to store common styles.
+//
+// You can import and use this partial in your Svelte components like this:
+//
+// <style lang="scss">
+//   @import './styles/colors';
+//   p {
+//     color: $black;
+//   }
+// </style>
+
+$black: #333;
+$background: #f2e3d4;
+$purple: #46488b;

@@ -1,0 +1,15 @@
+{
+    "fonts": [
+        {
+            "aifont": "PPHatton-Medium",
+            "family": "PP Hatton",
+            "weight": "500",
+            "style": ""
+        }, {
+            "aifont": "PTSerif-Italic",
+            "family": "PT Serif",
+            "weight": "400",
+            "style": ""
+        }
+    ]
+}

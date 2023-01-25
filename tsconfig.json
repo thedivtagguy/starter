@@ -1,0 +1,28 @@
+{
+    "extends": "./.svelte-kit/tsconfig.json",
+    "compilerOptions": {
+        "paths": {
+            "$lib":[
+                "src/lib"
+            ],
+            "$lib/*": [
+                "src/lib/*"
+            ],
+            "$utils/*": [
+                "src/utils/*"
+            ],
+            "$pkg": [
+                "package.json"
+            ],
+            "$images": [
+                "src/statics/images"
+            ],
+            "$images/*": [
+                "src/statics/images/*"
+            ],
+            "$locales/*": [
+                "locales/*"
+            ]
+        }
+    },
+}

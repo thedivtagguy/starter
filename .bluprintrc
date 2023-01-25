@@ -1,0 +1,51 @@
+{
+  "bluprint": "^0.6.3",
+  "name": "Graphics Kit (SvelteKit)",
+  "category": "Graphics rigs",
+  "actions": [{
+    "action": "prompt",
+    "questions": [{
+      "type": "text",
+      "name": "projectName",
+      "message": "What should we call this project?"
+    }]
+  }, {
+    "action": "remove",
+    "paths": [
+      ".github/workflows/sveltekit.yaml",
+      ".github/COMMIT_ERROR_ISSUE_TEMPLATE.md",
+      ".github/PULL_REQUEST_TEMPLATE.md",
+      "test/*",
+      "CONTRIBUTING.md",
+      "README.md"
+    ]
+  }, {
+    "action": "move",
+    "paths": ["PROJECT_README.md", "README.md"]
+  }, {
+    "action": "regexreplace",
+    "files": ["package.json", "README.md"],
+    "replace": [
+      ["projectName", "{{#slugify}}{{ projectName }}{{/slugify}}"]
+    ]
+  }, {
+    "action": "execute",
+    "cmds": [
+      ["git", ["init"]],
+      ["git", ["add", "."]],
+      ["git", ["commit", "-m", "initial"]],
+      ["yarn"],
+      ["npx", ["lefthook", "install"]],
+      ["yarn", ["startup:check-creds"]],
+      ["yarn", ["startup:create-repo"]],
+      ["yarn", ["startup:archie-doc"]],
+      ["yarn", ["startup:ai-templates"]]
+    ]
+  }, {
+    "action": "log",
+    "msg": "\n\n🏁 Finished creating your project, {cyan {{ projectName }}}!\n\nRun {green yarn start} to begin developing.\n"
+  }, {
+    "action": "log",
+    "msg": "📦 Graphics components have a new home. Check out what's new at:\n{cyan https://reuters-graphics.github.io/graphics-components/}\n"
+  }]
+}
