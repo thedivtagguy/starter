@@ -1,33 +1,27 @@
-![](https://graphics.thomsonreuters.com/style-assets/images/logos/reuters-graphics-logo/svg/graphics-logo-color-dark.svg)
+# Project starter
 
-# projectName
+## Getting Started
+Setting up the Google Doc
 
-Graphics created with [bluprint_graphics-kit](https://github.com/reuters-graphics/bluprint_graphics-kit).
+    Create a new Google Doc by copying the content from this file.
+    Share the newly created doc with divtagguywebsite@thedivtagguy.iam.gserviceaccount.com
+    Add the Google Doc ID to the google.json file.
+
+## Configuring the package.json
+
+    Include your project name
+    Homepage URL should be equal to your Netlify URL for staging deployment.
+    Subdirectory URL for your main website.
+
+## Setting up the .env file
+
+Create a new .env file and add the following details:
+
+GOOGLE_APPLICATION_CREDENTIALS = 'C:/Users/LENOVO/Documents/website/keys.json'
+GCLOUD_PROJECT = 'thedivtagguy'
+
+Your document is now set up and ready to go!
 
 ## Developing
 
-Develop your project.
-
-```
-yarn start
-```
-
-Build and publish preview pages to AWS.
-
-```
-yarn preview
-```
-
-Build and upload your project to RNGS server.
-
-```
-yarn upload
-```
-
-🍻 Publish your project in the RNGS server.
-
-```
-yarn pub
-```
-
-Read more in the [development docs](https://reuters-graphics.github.io/docs_graphics-kit/).
+Run npm run dev to start the development server.
