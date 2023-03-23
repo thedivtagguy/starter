@@ -7,6 +7,8 @@ Setting up the Google Doc
 2. Share the newly created doc with `divtagguywebsite@thedivtagguy.iam.gserviceaccount.com` (or whatever your service account is, if you don't have one read below).
 3. Add the Google Doc ID to the google.json file.
 
+All components from [Reuters Graphics](https://reuters-graphics.github.io/graphics-components/) can be pulled in :)
+
 # Set up
 
 For your first time:
