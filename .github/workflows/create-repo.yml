@@ -1,0 +1,25 @@
+name: Initialize Repository
+
+on:
+  repository:
+    types: [created]
+
+jobs:
+  initialize:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+
+      - name: Set repository name in config.json
+        run: |
+          repository_name="${{ github.event.repository.name }}"
+          echo "{\"name\": \"$repository_name\"}" > config.json
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git commit -am "Initializes $repository_name"
+          git push
