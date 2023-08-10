@@ -39,5 +39,4 @@ jobs:
         with:
           commit_message: "✅ Ready to clone and code."
           # commit_message: ${{ steps.last-commit-message.outputs.msg }}
-          # commit_options: '--amend --no-edit'
           push_options: --force
