@@ -1,25 +1,28 @@
-name: Initialize Repository
+name: Rename the project from template
 
-on:
-  repository:
-    types: [created]
+on: 
+  push:
+    branches:
+      - main
 
 jobs:
-  initialize:
+  rename-project:
     runs-on: ubuntu-latest
-
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
 
-      - name: Set repository name in config.json
+      - name: Determine if repository needs renaming
+        id: check_repo_name
+        run: echo "::set-output name=should_rename::${{ github.repository != 'thedivtagguy/starter' }}"
+
+      - name: Rename project if needed
+        if: steps.check_repo_name.outputs.should_rename == 'true'
         run: |
           repository_name="${{ github.event.repository.name }}"
           echo "{\"name\": \"$repository_name\"}" > config.json
-
-      - name: Commit and push changes
-        run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          git commit -am "Initializes $repository_name"
+          git add config.json
+          git commit -m "Initializes $repository_name"
           git push
