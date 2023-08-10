@@ -5,15 +5,15 @@ on: [push]
 jobs:
   rename-project:
     if: ${{ github.repository != 'thedivtagguy/starter' }}}
-      runs-on: ubuntu-latest
-      steps:
-        - name: Check out repository
-          uses: actions/checkout@v2
-          run: |
-            repository_name="${{ github.event.repository.name }}"
-            echo "{\"name\": \"$repository_name\"}" > config.json
-            git config user.name "GitHub Actions"
-            git config user.email "actions@github.com"
-            git add config.json
-            git commit -m "Initializes $repository_name"
-            git push
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+        run: |
+          repository_name="${{ github.event.repository.name }}"
+          echo "{\"name\": \"$repository_name\"}" > config.json
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add config.json
+          git commit -m "Initializes $repository_name"
+          git push
