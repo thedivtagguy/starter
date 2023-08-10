@@ -1,28 +1,19 @@
 name: Rename the project from template
 
-on: 
-  push:
-    branches:
-      - main
+on: [push]
 
 jobs:
   rename-project:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v2
-
-      - name: Determine if repository needs renaming
-        id: check_repo_name
-        run: echo "::set-output name=should_rename::${{ github.repository != 'thedivtagguy/starter' }}"
-
-      - name: Rename project if needed
-        if: steps.check_repo_name.outputs.should_rename == 'true'
-        run: |
-          repository_name="${{ github.event.repository.name }}"
-          echo "{\"name\": \"$repository_name\"}" > config.json
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-          git add config.json
-          git commit -m "Initializes $repository_name"
-          git push
+    if: ${{ github.repository != 'thedivtagguy/starter' }}}
+      runs-on: ubuntu-latest
+      steps:
+        - name: Check out repository
+          uses: actions/checkout@v2
+          run: |
+            repository_name="${{ github.event.repository.name }}"
+            echo "{\"name\": \"$repository_name\"}" > config.json
+            git config user.name "GitHub Actions"
+            git config user.email "actions@github.com"
+            git add config.json
+            git commit -m "Initializes $repository_name"
+            git push
