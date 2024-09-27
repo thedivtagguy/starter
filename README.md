@@ -1,46 +1,38 @@
-# Project starter
+# create-svelte
 
-## Getting Started (For new projects after setup)
-Setting up the Google Doc
+Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
 
-1. Create a new Google Doc by copying the [content from this file](https://docs.google.com/document/d/1JVgKtEPUdLLqzicXy20eEMH3JnWJ5-MDzD6jqAqqQkI/edit).
-2. Share the newly created doc with `divtagguywebsite@thedivtagguy.iam.gserviceaccount.com` (or whatever your service account is, if you don't have one read below).
-3. Add the Google Doc ID to the google.json file.
+## Creating a project
 
-All components from [Reuters Graphics](https://reuters-graphics.github.io/graphics-components/) can be pulled in :)
+If you're seeing this, you've probably already done this step. Congrats!
 
-# Set up
+```bash
+# create a new project in the current directory
+npm create svelte@latest
 
-For your first time:
-
-## Get your keys
-
-1. Generate a Google Drive API key [using the console](https://console.cloud.google.com/apis/credentials)
-2. Create a service account on the same page.
-3. Download the keys for the service account [here](https://console.cloud.google.com/iam-admin/serviceaccounts/)
-4. Store it in keys.json somewhere.
-
-
-## Configuring the package.json
-
-1. Include your project name. Same as your website url without the domain name.
-2. Homepage URL should be equal to your Netlify URL for staging deployment. IMPORTANT.
-3. Subdirectory URL for your main website.
-
-## Setting up the .env file
-
-Create a new .env file and add the following details:
-
-    GOOGLE_APPLICATION_CREDENTIALS = 'C:/Users/LENOVO/Documents/website/keys.json'
-    GCLOUD_PROJECT = 'thedivtagguy'
-
-Your document is now set up and ready to go!
+# create a new project in my-app
+npm create svelte@latest my-app
+```
 
 ## Developing
 
-Run npm run dev to start the development server.
+Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
-## Netlify
+```bash
+npm run dev
 
-1. Build command: npm run build
-2. Build directory: dist/cdn
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
+```
+
+## Building
+
+To create a production version of your app:
+
+```bash
+npm run build
+```
+
+You can preview the production build with `npm run preview`.
+
+> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.

@@ -1,0 +1,73 @@
+---
+title: First post
+description: First post.
+date: '2023-4-14'
+categories:
+  - sveltekit
+  - svelte
+author: 'John Doe'
+ogImage: 'https://svelte.dev/svelte-logo-horizontal.svg'
+twitterHandle: '@sveltejs'
+---
+
+<script>import Counter from '$components/charts/LineChart.svelte'</script>
+
+## Svelte Microsite Starter
+
+Hello! This is a simple, slightly opinionated starter for a Svelte data visualization microsite. In essence, it is a Sveltekit project that comes pre-configured with:
+
+- TailwindCSS for styling
+- Layerchart & Layercake for easy, standard data visualization.
+- Svelte-UX for components like buttons, modals, and more.
+- D3 for, well, everything you could possibly want to do with data.
+
+The idea is to make it easy to create one-off, data-driven pages. You can write your content in Markdown, include components that have fancy layouts, write more content, and just build it as a static site.
+
+It is very simple to include Svelte components in your content. Here's a basic Layerchart chart.
+
+<Counter />
+
+You can also include code examples like this.
+
+```javascript start editing the content.
+function add(a, b) {
+	return a + b;
+}
+// Syntax highlighting is supported!
+x = add(1, 2);
+```
+
+This is useful if you want to include code examples.
+
+You can <span class="text-red-500 transform animate-pulse rotate-3">style things</span> in <span class="text-3xl italic font-extrabold text-green-400">funky</span> ways with <span class="text-transparent bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text">TailwindCSS</span> right here <span class="animate-bounce">🎉</span> in the Markdown.
+
+This entire content lives in `src/content/content.mdx`.
+
+### Suggested Workflow
+
+To start off, you might want to go to `src/content/content.mdx` and remove everything except the YAML frontmatter. Then do whatever you want! You can organize your content in Markdown, or you can include Svelte components (an entire page itself, if you want) with everything in it.
+
+For SEO, edit the `title`, `description`, `ogImage`, and `twitterHandle` in the YAML frontmatter.
+
+When you're ready to publish, run `npm run build`.
+
+### Project Structure
+
+I have created a few aliases to make it easier to navigate the project.
+
+- `$lib`: Points to the `./src/lib` directory, which likely contains reusable library code and components.
+- `$components`: Resolves to `./src/lib/components`, where Svelte components are stored.
+- `$assets`: Maps to `./src/lib/assets`, containing static assets like images or fonts.
+- `$styles`: Points to `./src/lib/styles`, where CSS and other styling files are kept.
+- `$utils`: Points to `./src/utils`, which may contain utility functions and helper modules.
+
+These aliases make it easier to import files from these directories without using long relative paths. Use them!
+
+### Styling
+
+Styling is mostly done with TailwindCSS. For colors, the `tailwind.config.js` has some color palettes that are from the [svelte-ux](https://svelte-ux.techniq.dev/theme) theme generator. You can edit fonts in `src/lib/styles/fonts.css`.
+
+### TODO:
+
+- Add boilerplate components that come with nicer defaults.
+- Add guides on making responsive charts.

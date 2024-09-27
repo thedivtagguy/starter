@@ -1,38 +1,30 @@
-import { getAssetsPath, getBasePath } from './bin/svelte-kit/paths/index.js';
-
 import adapter from '@sveltejs/adapter-static';
-import autoprefixer from 'autoprefixer';
-import sveltePreprocess from 'svelte-preprocess';
+import { mdsvex } from 'mdsvex';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+import { getHighlighter } from 'shiki';
+import { escapeSvelte } from 'mdsvex';
+const mdsvexOptions = {
+	extensions: ['.md', '.mdx'],
+	highlight: {
+		highlighter: async (code, lang = 'text') => {
+			const highlighter = await getHighlighter({
+				themes: ['poimandres'],
+				langs: ['javascript', 'typescript']
+			});
+			await highlighter.loadLanguage('javascript', 'typescript');
+			const html = escapeSvelte(highlighter.codeToHtml(code, { lang, theme: 'poimandres' }));
+			return `{@html \`${html}\` }`;
+		}
+	}
+};
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-  preprocess: sveltePreprocess({
-    preserve: ['ld+json'],
-    scss: { quietDeps: true },
-    postcss: {
-      plugins: [autoprefixer],
-    },
-  }),
-  kit: {
-    appDir: '_app',
-    paths: {
-      assets: getAssetsPath(),
-      base: getBasePath(),
-    },
-    adapter: adapter({
-      pages: 'dist',
-      assets: 'dist/cdn',
-      fallback: null,
-      precompress: false,
-    }),
-    trailingSlash: 'always',
-    files: {
-      assets: 'src/statics',
-      lib: 'src/lib',
-      routes: 'pages',
-      appTemplate: 'src/template.html',
-    },
-  },
+	extensions: ['.svelte', '.md', '.mdx'],
+	kit: {
+		adapter: adapter()
+	},
+	preprocess: [vitePreprocess(), mdsvex(mdsvexOptions)]
 };
 
 export default config;
